@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<!-- Passing the title -->
+{% block title %} {{title}} {% endblock %}
+<!--start the content block -->
+{% block content %}
+<!-- For lop is used for the multiple articles -->
+{% for article in headlines.articles %}
+<!-- the main card -->
+<div>
+  <div class="d-flex border rounded-lg mt-2 shadow-lg">
+    <div class="d-flex flex-sm-column" p-5>
+      <div class="p-1 w-100 bg-white" style="margin-bottom: 5px;">
+        <h4>{{article.title}}</h4>
+      </div>
+      {% if article.description != None %}
+      <div class="p-1 w-100 bg-grey">
+        {{ article.description }}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- here the title and the discription box get over -->
+    <!-- Now for the image -->
+    {% if article.urlToImage != None %}
+    <div class="flex-sm-shrink-1 bg-light">
+      <img
+        src="{{article.urlToImage}}"
+        style="max-width: 20em; max-height: 20em;"
+        alt=""
+      />
+    </div>
+    {% endif %}
+  </div>
+</div>
+<!-- Card end-->
+{% endfor %}
+<!-- end for loop for card -->
+{% endblock%}
